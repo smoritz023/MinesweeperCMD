@@ -17,7 +17,7 @@ public class mines {
         //number of mines
         // int d = (x * y) / 2;
         // d = 1;
-        int d = 25;
+        int d = 10;
         
         int[][] playField = boardOps.initializeBoard(x, y);
         int[][] showBoard = boardOps.initializeBoard(x, y);
@@ -30,7 +30,7 @@ public class mines {
         mineField.placeNumbers(playField, x, y);
         // printBoard(playField, showBoard, x, y);
 
-        mineField.digHole(playField, showBoard, 4, 6);
+        mineField.digHole(playField, showBoard, 1, 1, x, y);
         printShowBoard(playField, showBoard, x, y);
 
         printMineBoard(playField, showBoard, x, y);
