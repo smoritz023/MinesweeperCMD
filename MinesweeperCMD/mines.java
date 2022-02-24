@@ -30,7 +30,7 @@ public class mines {
         mineField.placeNumbers(playField, x, y);
         // printBoard(playField, showBoard, x, y);
 
-        mineField.digHole(playField, showBoard, 1, 1, x, y);
+        mineField.digHole(playField, showBoard, 7, 8, x, y);
         printShowBoard(playField, showBoard, x, y);
 
         printMineBoard(playField, showBoard, x, y);

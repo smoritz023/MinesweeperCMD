@@ -14,18 +14,60 @@ public class mineField {
                 // showBoard[adjustedX][adjustedY] = 1;
             }
             else{
-                if((xCoord > 0) && (xCoord < xMax) && (yCoord > 0) && (yCoord < yMax)){
+                if((xCoord > 1) && (xCoord < xMax-1) && (yCoord > 1) && (yCoord < yMax-1)){
                     showBoard[xCoord][yCoord] = 1;
                     // digHole(board, showBoard, adjustedX-1, adjustedY-1);
                     // digHole(board, showBoard, adjustedX, adjustedY-1);
                     // digHole(board, showBoard, adjustedX+1, adjustedY-1);
                     // digHole(board, showBoard, adjustedX+1, adjustedY);
-                    if((showBoard[xCoord+1][yCoord+1] == 0) && ((xCoord+1) < xMax) && (yCoord < yMax)){
-                        System.out.printf("found undug at %d:%d", (xCoord), (yCoord));
+
+                    // if((showBoard[xCoord-1][yCoord+1] == 0) && ((xCoord-1 < xMax) && (yCoord+1 < yMax))){
+                    //     System.out.printf("found undeg at %d:%d", (xCoord), (yCoord));
+                    //     showBoard[xCoord][yCoord] = 1;
+                    //     digHole(board, showBoard, xCoord-1, yCoord+1, xMax, yMax);
+                    // }
+
+                    // //up/left recursion
+                    // if((showBoard[xCoord-1][yCoord-1] == 0) && ((xCoord-1 < xMax) && (yCoord-1 < yMax))){
+                    //     showBoard[xCoord][yCoord] = 1;
+                    //     digHole(board, showBoard, xCoord-1, yCoord-1, xMax, yMax);
+                    // }
+                    //up recursion
+                    if((showBoard[xCoord-1][yCoord] == 0) && ((xCoord-1 < xMax) && (yCoord < yMax))){
                         showBoard[xCoord][yCoord] = 1;
-                        digHole(board, showBoard, xCoord+1, yCoord+1, xMax, yMax);
+                        digHole(board, showBoard, xCoord-1, yCoord, xMax, yMax);
                     }
-                    // digHole(board, showBoard, adjustedX, adjustedY+1);
+                    // //up/right recursion
+                    // if((showBoard[xCoord-1][yCoord+1] == 0) && ((xCoord-1 < xMax) && (yCoord+1 < yMax))){
+                    //     showBoard[xCoord][yCoord] = 1;
+                    //     digHole(board, showBoard, xCoord-1, yCoord+1, xMax, yMax);
+                    // }
+                    //right recursion
+                    if((showBoard[xCoord][yCoord+1] == 0) && ((xCoord < xMax) && (yCoord+1 < yMax))){
+                        showBoard[xCoord][yCoord] = 1;
+                        digHole(board, showBoard, xCoord, yCoord+1, xMax, yMax);
+                    }
+                    // //down right recursion
+                    // if((showBoard[xCoord+1][yCoord+1] == 0) && ((xCoord+1) < xMax) && (yCoord+1 < yMax)){
+                    //     showBoard[xCoord][yCoord] = 1;
+                    //     digHole(board, showBoard, xCoord+1, yCoord+1, xMax, yMax);
+                    // }
+                    //bottom recursion
+                    if((showBoard[xCoord+1][yCoord] == 0) && ((xCoord+1 < xMax) && (yCoord < yMax))){
+                        showBoard[xCoord][yCoord] = 1;
+                        digHole(board, showBoard, xCoord+1, yCoord, xMax, yMax);
+                    }
+                    // //bottom left recursion
+                    // if((showBoard[xCoord+1][yCoord-1] == 0) && ((xCoord+1 < xMax) && (yCoord-1 < yMax))){
+                    //     showBoard[xCoord][yCoord] = 1;
+                    //     digHole(board, showBoard, xCoord+1, yCoord-1, xMax, yMax);
+                    // }
+                    //left recursion
+                    if((showBoard[xCoord][yCoord-1] == 0) && ((xCoord < xMax) && (yCoord-1 < yMax))){
+                        showBoard[xCoord][yCoord] = 1;
+                        digHole(board, showBoard, xCoord, yCoord-1, xMax, yMax);
+                    }
+
                     // digHole(board, showBoard, adjustedX-1, adjustedY+1);
                     // digHole(board, showBoard, adjustedX-1, adjustedY);
                 }
