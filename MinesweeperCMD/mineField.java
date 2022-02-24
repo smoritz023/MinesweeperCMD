@@ -16,17 +16,6 @@ public class mineField {
             else{
                 if((xCoord > 1) && (xCoord < xMax-1) && (yCoord > 1) && (yCoord < yMax-1)){
                     showBoard[xCoord][yCoord] = 1;
-                    // digHole(board, showBoard, adjustedX-1, adjustedY-1);
-                    // digHole(board, showBoard, adjustedX, adjustedY-1);
-                    // digHole(board, showBoard, adjustedX+1, adjustedY-1);
-                    // digHole(board, showBoard, adjustedX+1, adjustedY);
-
-                    // if((showBoard[xCoord-1][yCoord+1] == 0) && ((xCoord-1 < xMax) && (yCoord+1 < yMax))){
-                    //     System.out.printf("found undeg at %d:%d", (xCoord), (yCoord));
-                    //     showBoard[xCoord][yCoord] = 1;
-                    //     digHole(board, showBoard, xCoord-1, yCoord+1, xMax, yMax);
-                    // }
-
                     // //up/left recursion
                     // if((showBoard[xCoord-1][yCoord-1] == 0) && ((xCoord-1 < xMax) && (yCoord-1 < yMax))){
                     //     showBoard[xCoord][yCoord] = 1;
@@ -67,21 +56,20 @@ public class mineField {
                         showBoard[xCoord][yCoord] = 1;
                         digHole(board, showBoard, xCoord, yCoord-1, xMax, yMax);
                     }
-
-                    // digHole(board, showBoard, adjustedX-1, adjustedY+1);
-                    // digHole(board, showBoard, adjustedX-1, adjustedY);
                 }
             }
         }
         return board;
     }
 
-    public static int[][] placeMines(int[][] board, int x, int y, int d){
+    public static int[][] placeMines(int[][] board, int xMax, int yMax, int d, int xCoord, int yCoord){
         Random rand = new Random();
         while(d > 0){
-            int randX = rand.nextInt(x);
-            int randY = rand.nextInt(y);
-            if(board[randY][randX] != 10){
+            int randX = rand.nextInt(xMax);
+            int randY = rand.nextInt(yMax);
+            if((board[randY][randX] != 10) &&
+                    (randX != xCoord) && (randX != (xCoord-1)) && (randX != (xCoord+1)) &&
+                    (randY != yCoord) && (randY != (yCoord-1)) && (randY != (yCoord+1))){
                 board[randY][randX] = 10;
                 // System.out.println("Mines remaining " + d);
                 d--;

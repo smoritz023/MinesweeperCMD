@@ -17,20 +17,23 @@ public class mines {
         //number of mines
         // int d = (x * y) / 2;
         // d = 1;
-        int d = 10;
+        int d = 25;
+
+        int xCoord = 5;
+        int yCoord = 5;
         
         int[][] playField = boardOps.initializeBoard(x, y);
         int[][] showBoard = boardOps.initializeBoard(x, y);
 
 
-        mineField.placeMines(playField, x, y, d);
+        mineField.placeMines(playField, x, y, d, xCoord, yCoord);
         // System.out.println("Randomly place mines");
         // printBoard(playField, x, y);
 
         mineField.placeNumbers(playField, x, y);
         // printBoard(playField, showBoard, x, y);
 
-        mineField.digHole(playField, showBoard, 7, 8, x, y);
+        mineField.digHole(playField, showBoard, xCoord, yCoord, x, y);
         printShowBoard(playField, showBoard, x, y);
 
         printMineBoard(playField, showBoard, x, y);
