@@ -33,7 +33,9 @@ public class mines {
         mineField.placeNumbers(playField, x, y);
         // printBoard(playField, showBoard, x, y);
 
-        mineField.digHole(playField, showBoard, xCoord, yCoord, x, y);
+        // mineField.digHole(playField, showBoard, xCoord, yCoord, x, y);
+        // mineField.digHole(playField, showBoard, 0, 0, x, y);
+        mineField.digHole(playField, showBoard, 0, x-1, x, y);
         printShowBoard(playField, showBoard, x, y);
 
         printMineBoard(playField, showBoard, x, y);
