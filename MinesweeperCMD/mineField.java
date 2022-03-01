@@ -9,49 +9,49 @@ public class mineField {
                 System.out.println("hit a mine at " + xCoord + ":" + yCoord);
             }
             else if((board[xCoord][yCoord] > 0) && (board[xCoord][yCoord] < 9)){
-                System.out.println("hit a number at " + xCoord + ":" + yCoord);
-                return board;
-                // showBoard[adjustedX][adjustedY] = 1;
+                // System.out.println("hit a number at " + xCoord + ":" + yCoord);
+                // return board;
+                showBoard[xCoord][yCoord] = 1;
             }
             else{
                 //core of field
                 if((xCoord > 0) && (xCoord < xMax-1) && (yCoord > 0) && (yCoord < yMax-1)){
                     showBoard[xCoord][yCoord] = 1;
-                    // //up/left recursion
-                    // if((showBoard[xCoord-1][yCoord-1] == 0) && ((xCoord-1 < xMax) && (yCoord-1 < yMax))){
-                    //     showBoard[xCoord][yCoord] = 1;
-                    //     digHole(board, showBoard, xCoord-1, yCoord-1, xMax, yMax);
-                    // }
+                    //up/left recursion
+                    if((showBoard[xCoord-1][yCoord-1] == 0) && ((xCoord-1 < xMax) && (yCoord-1 < yMax))){
+                        showBoard[xCoord][yCoord] = 1;
+                        digHole(board, showBoard, xCoord-1, yCoord-1, xMax, yMax);
+                    }
                     //up recursion
                     if((showBoard[xCoord-1][yCoord] == 0) && ((xCoord-1 < xMax) && (yCoord < yMax))){
                         showBoard[xCoord][yCoord] = 1;
                         digHole(board, showBoard, xCoord-1, yCoord, xMax, yMax);
                     }
-                    // //up/right recursion
-                    // if((showBoard[xCoord-1][yCoord+1] == 0) && ((xCoord-1 < xMax) && (yCoord+1 < yMax))){
-                    //     showBoard[xCoord][yCoord] = 1;
-                    //     digHole(board, showBoard, xCoord-1, yCoord+1, xMax, yMax);
-                    // }
+                    //up/right recursion
+                    if((showBoard[xCoord-1][yCoord+1] == 0) && ((xCoord-1 < xMax) && (yCoord+1 < yMax))){
+                        showBoard[xCoord][yCoord] = 1;
+                        digHole(board, showBoard, xCoord-1, yCoord+1, xMax, yMax);
+                    }
                     //right recursion
                     if((showBoard[xCoord][yCoord+1] == 0) && ((xCoord < xMax) && (yCoord+1 < yMax))){
                         showBoard[xCoord][yCoord] = 1;
                         digHole(board, showBoard, xCoord, yCoord+1, xMax, yMax);
                     }
-                    // //down right recursion
-                    // if((showBoard[xCoord+1][yCoord+1] == 0) && ((xCoord+1) < xMax) && (yCoord+1 < yMax)){
-                    //     showBoard[xCoord][yCoord] = 1;
-                    //     digHole(board, showBoard, xCoord+1, yCoord+1, xMax, yMax);
-                    // }
+                    //down right recursion
+                    if((showBoard[xCoord+1][yCoord+1] == 0) && ((xCoord+1) < xMax) && (yCoord+1 < yMax)){
+                        showBoard[xCoord][yCoord] = 1;
+                        digHole(board, showBoard, xCoord+1, yCoord+1, xMax, yMax);
+                    }
                     //bottom recursion
                     if((showBoard[xCoord+1][yCoord] == 0) && ((xCoord+1 < xMax) && (yCoord < yMax))){
                         showBoard[xCoord][yCoord] = 1;
                         digHole(board, showBoard, xCoord+1, yCoord, xMax, yMax);
                     }
-                    // //bottom left recursion
-                    // if((showBoard[xCoord+1][yCoord-1] == 0) && ((xCoord+1 < xMax) && (yCoord-1 < yMax))){
-                    //     showBoard[xCoord][yCoord] = 1;
-                    //     digHole(board, showBoard, xCoord+1, yCoord-1, xMax, yMax);
-                    // }
+                    //bottom left recursion
+                    if((showBoard[xCoord+1][yCoord-1] == 0) && ((xCoord+1 < xMax) && (yCoord-1 < yMax))){
+                        showBoard[xCoord][yCoord] = 1;
+                        digHole(board, showBoard, xCoord+1, yCoord-1, xMax, yMax);
+                    }
                     //left recursion
                     if((showBoard[xCoord][yCoord-1] == 0) && ((xCoord < xMax) && (yCoord-1 < yMax))){
                         showBoard[xCoord][yCoord] = 1;

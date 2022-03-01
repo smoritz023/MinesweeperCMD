@@ -1,8 +1,10 @@
-import java.util.Scanner;
 // import java.util.Random;
 
 public class mines {
     public static void main(String[] args){
+
+        gameState.mineSweeper();
+        
         // Scanner keyboardInput = new Scanner(System.in);
         // System.out.print("Enter how large you would like the board to be: ");
         // int x = keyboardInput.nextInt();
@@ -17,7 +19,7 @@ public class mines {
         //number of mines
         // int d = (x * y) / 2;
         // d = 1;
-        int d = 25;
+        int d = 30;
 
         int xCoord = 5;
         int yCoord = 5;
@@ -34,7 +36,7 @@ public class mines {
         // printBoard(playField, showBoard, x, y);
 
         mineField.digHole(playField, showBoard, xCoord, yCoord, x, y);
-        System.out.println("");
+        System.out.println(""); 
 
         printShowBoard(playField, showBoard, x, y);
         System.out.println("");
