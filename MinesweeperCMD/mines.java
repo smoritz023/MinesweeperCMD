@@ -3,7 +3,7 @@
 public class mines {
     public static void main(String[] args){
 
-        gameState.mineSweeper();
+        // gameState.mineSweeper();
         
         // Scanner keyboardInput = new Scanner(System.in);
         // System.out.print("Enter how large you would like the board to be: ");
@@ -36,12 +36,17 @@ public class mines {
         // printBoard(playField, showBoard, x, y);
 
         mineField.digHole(playField, showBoard, xCoord, yCoord, x, y);
-        System.out.println(""); 
+        System.out.println("dig hole at x,y"); 
+        mineField.digHole(playField, showBoard, x-1, y-1, x, y);
+        System.out.println("dig hole at x-1,y-1");
+        mineField.digHole(playField, showBoard, 0, y-1, x, y);
+        System.out.println("dig holde at x-1,0");
+        System.out.println("");
 
         printShowBoard(playField, showBoard, x, y);
         System.out.println("");
 
-        printMineBoard(playField, showBoard, x, y);
+        // printMineBoard(playField, showBoard, x, y);
     }
 
     public static void printShowBoard(int[][] board, int[][] showBoard, int x, int y){

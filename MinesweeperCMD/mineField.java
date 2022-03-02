@@ -253,7 +253,6 @@ public class mineField {
                 }
                 //bottom edge case
                 if((xCoord == xMax-2) && (yCoord > 0) && (yCoord < yMax-1)){
-                    System.out.println("bottom edge case");
                     //left
                     if((showBoard[xCoord][yCoord-1] == 0)){
                         showBoard[xCoord][yCoord-1] = 1;
@@ -282,7 +281,6 @@ public class mineField {
                 }
                 //top edge case
                 if((xCoord == 1) && (yCoord > 0) && (yCoord < yMax-1)){
-                    System.out.println("top edge case");
                     //left
                     if((showBoard[xCoord][yCoord-1] == 0)){
                         showBoard[xCoord][yCoord-1] = 1;
@@ -311,7 +309,6 @@ public class mineField {
                 }
                 //left edge case
                 if((yCoord == 1) && (xCoord > 0) && (xCoord < xMax - 1)){
-                    System.out.println("left edge case");
                     //up
                     if((showBoard[xCoord-1][yCoord] == 0)){
                         showBoard[xCoord-1][yCoord] = 1;
@@ -340,7 +337,6 @@ public class mineField {
                 }
                 //right edge case
                 if((yCoord == yMax-2) && (xCoord > 0) && (xCoord < xMax - 1)){
-                    System.out.println("right edge case");
                     //down
                     if((showBoard[xCoord+1][yCoord] == 0)){
                         showBoard[xCoord+1][yCoord] = 1;
