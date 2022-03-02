@@ -140,7 +140,7 @@ public class mineField {
                 }
                 //left side
                 if((yCoord == 0) && (xCoord > 0) && (xCoord < xMax-1)){
-                    showBoard[xCoord][yCoord] = 1;
+                    // showBoard[xCoord][yCoord] = 1;
                     //down
                     if((showBoard[xCoord+1][yCoord] == 0)){
                         showBoard[xCoord+1][yCoord] = 1;
@@ -251,6 +251,123 @@ public class mineField {
                         digHole(board, showBoard, xCoord-1, yCoord-1, xMax, yMax);
                     }
                 }
+                //bottom edge case
+                if((xCoord == xMax-2) && (yCoord > 0) && (yCoord < yMax-1)){
+                    System.out.println("bottom edge case");
+                    //left
+                    if((showBoard[xCoord][yCoord-1] == 0)){
+                        showBoard[xCoord][yCoord-1] = 1;
+                        digHole(board, showBoard, xCoord, yCoord-1, xMax, yMax);
+                    }
+                    //down/left
+                    if((showBoard[xCoord+1][yCoord-1] == 0)){
+                        showBoard[xCoord+1][yCoord-1] = 1;
+                        digHole(board, showBoard, xCoord+1, yCoord-1, xMax, yMax);
+                    }
+                    //down
+                    if((showBoard[xCoord+1][yCoord] == 0)){
+                        showBoard[xCoord+1][yCoord] = 1;
+                        digHole(board, showBoard, xCoord+1, yCoord, xMax, yMax);
+                    }  
+                    //down/right
+                    if((showBoard[xCoord+1][yCoord+1] == 0)){
+                        showBoard[xCoord+1][yCoord+1] = 1;
+                        digHole(board, showBoard, xCoord+1, yCoord+1, xMax, yMax);
+                    }
+                    //right
+                    if((showBoard[xCoord][yCoord+1] == 0)){
+                        showBoard[xCoord][yCoord+1] = 1;
+                        digHole(board, showBoard, xCoord, yCoord+1, xMax, yMax);
+                    }
+                }
+                //top edge case
+                if((xCoord == 1) && (yCoord > 0) && (yCoord < yMax-1)){
+                    System.out.println("top edge case");
+                    //left
+                    if((showBoard[xCoord][yCoord-1] == 0)){
+                        showBoard[xCoord][yCoord-1] = 1;
+                        digHole(board, showBoard, xCoord, yCoord-1, xMax, yMax);
+                    }
+                    //right
+                    if((showBoard[xCoord][yCoord+1] == 0)){
+                        showBoard[xCoord][yCoord+1] = 1;
+                        digHole(board, showBoard, xCoord, yCoord+1, xMax, yMax);
+                    }
+                    //up
+                    if((showBoard[xCoord-1][yCoord] == 0)){
+                        showBoard[xCoord-1][yCoord] = 1;
+                        digHole(board, showBoard, xCoord-1, yCoord, xMax, yMax);
+                    }
+                    //up/right
+                    if((showBoard[xCoord-1][yCoord+1] == 0)){
+                        showBoard[xCoord-1][yCoord+1] = 1;
+                        digHole(board, showBoard, xCoord-1, yCoord+1, xMax, yMax);
+                    }
+                    //up/left
+                    if((showBoard[xCoord-1][yCoord-1] == 0)){
+                        showBoard[xCoord-1][yCoord-1] = 1;
+                        digHole(board, showBoard, xCoord-1, yCoord-1, xMax, yMax);
+                    }
+                }
+                //left edge case
+                if((yCoord == 1) && (xCoord > 0) && (xCoord < xMax - 1)){
+                    System.out.println("left edge case");
+                    //up
+                    if((showBoard[xCoord-1][yCoord] == 0)){
+                        showBoard[xCoord-1][yCoord] = 1;
+                        digHole(board, showBoard, xCoord-1, yCoord, xMax, yMax);
+                    }
+                    //down
+                    if((showBoard[xCoord+1][yCoord] == 0)){
+                        showBoard[xCoord+1][yCoord] = 1;
+                        digHole(board, showBoard, xCoord+1, yCoord, xMax, yMax);
+                    }                    
+                    //up/left
+                    if((showBoard[xCoord-1][yCoord-1] == 0)){
+                        showBoard[xCoord-1][yCoord-1] = 1;
+                        digHole(board, showBoard, xCoord-1, yCoord-1, xMax, yMax);
+                    }
+                    //left
+                    if((showBoard[xCoord][yCoord-1] == 0)){
+                        showBoard[xCoord][yCoord-1] = 1;
+                        digHole(board, showBoard, xCoord, yCoord-1, xMax, yMax);
+                    }
+                    //down/left
+                    if((showBoard[xCoord+1][yCoord-1] == 0)){
+                        showBoard[xCoord+1][yCoord-1] = 1;
+                        digHole(board, showBoard, xCoord+1, yCoord-1, xMax, yMax);
+                    }
+                }
+                //right edge case
+                if((yCoord == yMax-2) && (xCoord > 0) && (xCoord < xMax - 1)){
+                    System.out.println("right edge case");
+                    //down
+                    if((showBoard[xCoord+1][yCoord] == 0)){
+                        showBoard[xCoord+1][yCoord] = 1;
+                        digHole(board, showBoard, xCoord+1, yCoord, xMax, yMax);
+                    }
+                    //down/right
+                    if((showBoard[xCoord+1][yCoord+1] == 0)){
+                        showBoard[xCoord+1][yCoord+1] = 1;
+                        digHole(board, showBoard, xCoord+1, yCoord+1, xMax, yMax);
+                    }
+                    //right
+                    if((showBoard[xCoord][yCoord+1] == 0)){
+                        showBoard[xCoord][yCoord+1] = 1;
+                        digHole(board, showBoard, xCoord, yCoord+1, xMax, yMax);
+                    }
+                    //up
+                    if((showBoard[xCoord-1][yCoord] == 0)){
+                        showBoard[xCoord-1][yCoord] = 1;
+                        digHole(board, showBoard, xCoord-1, yCoord, xMax, yMax);
+                    }
+                    //up/right
+                    if((showBoard[xCoord-1][yCoord+1] == 0)){
+                        showBoard[xCoord-1][yCoord+1] = 1;
+                        digHole(board, showBoard, xCoord-1, yCoord+1, xMax, yMax);
+                    }
+                }
+
             }
         }
         return board;
