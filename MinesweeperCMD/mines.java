@@ -3,7 +3,7 @@
 public class mines {
     public static void main(String[] args){
 
-        // gameState.mineSweeper();
+        gameState.mineSweeper();
         
         // Scanner keyboardInput = new Scanner(System.in);
         // System.out.print("Enter how large you would like the board to be: ");

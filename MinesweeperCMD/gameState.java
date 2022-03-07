@@ -5,6 +5,7 @@ public class gameState {
         int x = 0;
         int y = 0;
         int mode = 1;
+        int numOfMines = 0;
         System.out.println("Welcome to MineSweeper");
         while(mode > 0){
             System.out.println("Select Option Below for Difficulty:");
@@ -19,26 +20,33 @@ public class gameState {
             if(mode == 1){
                 System.out.println("Easy Mode Selected");
                 x = 10;
+                numOfMines = 15;
             }
             if(mode == 2){
                 System.out.println("Medium Mode Selected");
                 x = 15;
+                numOfMines = 25;
             }
             if(mode == 3){
                 System.out.println("Hard Mode Selected");
                 x = 20;
+                numOfMines = 35;
             }
             if(mode == 4){
                 System.out.println("Custom Mode Selected");
                 System.out.print("Board Size Input: ");
                 x = keyboardInput.nextInt();
                 y = x;
+                System.out.print("Number of Mines: ");
+                numOfMines = keyboardInput.nextInt();
+
             }
             if(mode == 5){
                 System.out.println("Exit Selected");
                 System.out.println("Goodbye");
                 mode = 0;
             }
+
             int[][] playField = boardOps.initializeBoard(x, y);
             int[][] showBoard = boardOps.initializeBoard(x, y);
             
