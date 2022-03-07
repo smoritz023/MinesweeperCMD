@@ -46,6 +46,8 @@ public class mines {
         printShowBoard(playField, showBoard, x, y);
         System.out.println("");
 
+        System.out.println("end");
+
         // printMineBoard(playField, showBoard, x, y);
     }
 
