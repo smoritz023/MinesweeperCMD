@@ -21,32 +21,32 @@ public class mines {
         // d = 1;
         int d = 30;
 
-        int xCoord = 5;
-        int yCoord = 5;
+        // int xCoord = 5;
+        // int yCoord = 5;
         
-        int[][] playField = boardOps.initializeBoard(x, y);
-        int[][] showBoard = boardOps.initializeBoard(x, y);
+        // int[][] playField = boardOps.initializeBoard(x, y);
+        // int[][] showBoard = boardOps.initializeBoard(x, y);
 
 
-        mineField.placeMines(playField, x, y, d, xCoord, yCoord);
-        // System.out.println("Randomly place mines");
-        // printBoard(playField, x, y);
+        // mineField.placeMines(playField, x, y, d, xCoord, yCoord);
+        // // System.out.println("Randomly place mines");
+        // // printBoard(playField, x, y);
 
-        mineField.placeNumbers(playField, x, y);
-        // printBoard(playField, showBoard, x, y);
+        // mineField.placeNumbers(playField, x, y);
+        // // printBoard(playField, showBoard, x, y);
 
-        mineField.digHole(playField, showBoard, xCoord, yCoord, x, y);
-        System.out.println("dig hole at x,y"); 
-        mineField.digHole(playField, showBoard, x-1, y-1, x, y);
-        System.out.println("dig hole at x-1,y-1");
-        mineField.digHole(playField, showBoard, 0, y-1, x, y);
-        System.out.println("dig holde at x-1,0");
-        System.out.println("");
+        // mineField.digHole(playField, showBoard, xCoord, yCoord, x, y);
+        // System.out.println("dig hole at x,y"); 
+        // mineField.digHole(playField, showBoard, x-1, y-1, x, y);
+        // System.out.println("dig hole at x-1,y-1");
+        // mineField.digHole(playField, showBoard, 0, y-1, x, y);
+        // System.out.println("dig holde at x-1,0");
+        // System.out.println("");
 
-        printShowBoard(playField, showBoard, x, y);
-        System.out.println("");
+        // printShowBoard(playField, showBoard, x, y);
+        // System.out.println("");
 
-        System.out.println("end");
+        // System.out.println("end");
 
         // printMineBoard(playField, showBoard, x, y);
     }
