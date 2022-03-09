@@ -77,6 +77,7 @@ public class gameState {
                 yCoord = keyboardInput.nextInt();
                 System.out.print("yCoord: ");
                 xCoord = keyboardInput.nextInt();
+                //adjusting to index starting at 0
                 xCoord--;
                 yCoord--;
                 if((xCoord >= 0) && (xCoord < x) && (yCoord >= 0) && (yCoord < y)){
@@ -86,14 +87,52 @@ public class gameState {
                     turnCounter++;
 
                     System.out.printf("x: %d,y: %d\n", yCoord,xCoord);
+                    mines.printShowBoard(playField, showBoard, x, y);
                 }
                 else{
-                    System.out.printf("Coordinates must be within range of 1 - %d", x);
+                    System.out.printf("Coordinates must be within range of 1 - %d\n", x);
                 }
             }
-            if(turnCounter == 1){
-                // char turn;
-                mines.printShowBoard(playField, showBoard, x, y);
+            if(turnCounter >= 1){
+                boolean inTurn = true;
+                while(inTurn){
+                    System.out.printf("Turn #%d\n", turnCounter);
+                    System.out.println("1) To dig a hole enter");
+                    System.out.println("2) To place a flag enter");
+                    int turnDecision = keyboardInput.nextInt();
+                    if(turnDecision != 1 && turnDecision != 2){
+                        System.out.println("Please enter a valid number (1-2)");
+                    }
+                    else if(turnDecision == 1){
+                        System.out.println("Dig hole at");
+                        System.out.print("xCoord: ");
+                        yCoord = keyboardInput.nextInt();
+                        System.out.print("yCoord: ");
+                        xCoord = keyboardInput.nextInt();
+                        //adjusting to index starting at 0
+                        xCoord--;
+                        yCoord--;
+                        if((xCoord >= 0) && (xCoord < x) && (yCoord >= 0) && (yCoord < y)){
+                            mineField.digHole(playField, showBoard, xCoord, yCoord, x, y);
+                            if(playField[yCoord][xCoord] == 10){
+                                System.out.printf("Hit a mine at %d,%d", yCoord-1, xCoord-1);
+                                System.out.println("GAME OVER");
+                            }
+                            turnCounter++;
+        
+                            System.out.printf("x: %d,y: %d\n", yCoord,xCoord);
+                            mines.printShowBoard(playField, showBoard, x, y);
+                            turnCounter++;
+                        }
+                        else{
+                            System.out.printf("Coordinates must be within range of 1 - %d\n", x);
+                        }
+                    }
+                    else if(turnDecision == 2){
+                        System.out.println("Place flag, needs logic...");
+                    }
+                }
+                
                 turnCounter++;
                 gameState = false;
             }
