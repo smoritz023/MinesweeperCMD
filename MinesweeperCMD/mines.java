@@ -52,28 +52,35 @@ public class mines {
     }
 
     public static void printShowBoard(int[][] board, int[][] showBoard, int x, int y){
+        System.out.println("Len  " + showBoard.length);
+        
         for(int i = 0; i < x; i++){
             for(int j = 0; j < y; j++){
-                // board[0][1] = 99;
-                if(showBoard[i][j] == 1){
-                    if(board[i][j] == 9){
-                        System.out.print("F" + " ");
-                    }
-                    else if(board[i][j] == 10){
-                        System.out.print("M" + " ");
-                    }
-                    else if(board[i][j] == 0){
-                        System.out.print("0" + " ");
-                    }
-                    else if((board[i][j] > 0) && (board[i][j] < 9)){
-                        System.out.print(board[i][j] + " ");
-                    }
-                    else{
-                        System.out.print(board[i][j] + " ");
-                    }
+                if(i == 0 && j == 0){
+                    System.out.println("here");
                 }
-                else if(showBoard[i][j] == 0){
-                    System.out.print(" " + " ");
+                else{
+                    // board[0][2] = 99;
+                    if(showBoard[i][j] == 1){
+                        if(board[i][j] == 9){
+                            System.out.print("F" + " ");
+                        }
+                        else if(board[i][j] == 10){
+                            System.out.print("M" + " ");
+                        }
+                        else if(board[i][j] == 0){
+                            System.out.print("0" + " ");
+                        }
+                        else if((board[i][j] > 0) && (board[i][j] < 9)){
+                            System.out.print(board[i][j] + " ");
+                        }
+                        else{
+                            System.out.print(board[i][j] + " ");
+                        }
+                    }
+                    else if(showBoard[i][j] == 0){
+                        System.out.print(" " + " ");
+                    }
                 }
 
             }
