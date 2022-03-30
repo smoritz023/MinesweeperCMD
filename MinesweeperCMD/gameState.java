@@ -97,11 +97,13 @@ public class gameState {
                 boolean inTurn = true;
                 while(inTurn){
                     System.out.printf("Turn #%d\n", turnCounter);
-                    System.out.println("1) To dig a hole enter");
-                    System.out.println("2) To place a flag enter");
+                    System.out.println("1) To dig a hole");
+                    System.out.println("2) To place a flag");
+                    System.out.println("3) To remove a flag");
+                    System.out.println("4) Exit Game");
                     int turnDecision = keyboardInput.nextInt();
-                    if(turnDecision != 1 && turnDecision != 2){
-                        System.out.println("Please enter a valid number (1-2)");
+                    if(turnDecision < 1 && turnDecision > 4){
+                        System.out.println("Please enter a valid number (1-4)");
                     }
                     else if(turnDecision == 1){
                         System.out.println("Dig hole at");
@@ -131,10 +133,18 @@ public class gameState {
                     else if(turnDecision == 2){
                         System.out.println("Place flag, needs logic...");
                     }
+                    else if(turnDecision == 3){
+                        System.out.println("Remove flag, needs logic...");
+                    }
+                    else if(turnDecision == 4){
+                        System.out.println("Aborting Game...");
+                        System.out.println("Goodbye");
+                        gameState = false;
+                        inTurn = false;
+                        break;
+                    }
                 }
-                
                 turnCounter++;
-                gameState = false;
             }
         }
     }
