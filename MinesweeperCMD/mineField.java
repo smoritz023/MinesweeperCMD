@@ -6,7 +6,7 @@ public class mineField {
     public static int[][] digHole(int[][] board, int[][] showBoard, int xCoord, int yCoord, int xMax, int yMax){
         if((xCoord >= 0) && (xCoord <= xMax) && (yCoord >= 0) && (xCoord <= yMax)){
             if(board[xCoord][yCoord] == 10){
-                System.out.println("hit a mine at " + xCoord + ":" + yCoord);
+                // System.out.println("hit a mine at " + xCoord + ":" + yCoord);
             }
             else if((board[xCoord][yCoord] > 0) && (board[xCoord][yCoord] < 9)){
                 // System.out.println("hit a number at " + xCoord + ":" + yCoord);

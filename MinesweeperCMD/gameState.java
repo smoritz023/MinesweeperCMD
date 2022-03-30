@@ -6,6 +6,7 @@ public class gameState {
         int y = 0;
         int mode = 1;
         int numOfMines = 0;
+        int numOfFlagsRemain = 0;
         boolean gameState = false;
         int turnCounter = 0;
         int xCoord;
@@ -101,24 +102,33 @@ public class gameState {
                     System.out.println("2) To place a flag");
                     System.out.println("3) To remove a flag");
                     System.out.println("4) Exit Game");
+                    System.out.print("Input: ");
                     int turnDecision = keyboardInput.nextInt();
+                    // System.out.println();
                     if(turnDecision < 1 && turnDecision > 4){
                         System.out.println("Please enter a valid number (1-4)");
                     }
                     else if(turnDecision == 1){
-                        System.out.println("Dig hole at");
+                        System.out.println("Dig hole at: **for abort enter 100");
                         System.out.print("xCoord: ");
-                        yCoord = keyboardInput.nextInt();
+                        yCoord = keyboardInput.nextInt() - 1;
                         System.out.print("yCoord: ");
-                        xCoord = keyboardInput.nextInt();
+                        xCoord = keyboardInput.nextInt() - 1;
                         //adjusting to index starting at 0
-                        xCoord--;
-                        yCoord--;
+                        // xCoord--;
+                        // yCoord--;
                         if((xCoord >= 0) && (xCoord < x) && (yCoord >= 0) && (yCoord < y)){
                             mineField.digHole(playField, showBoard, xCoord, yCoord, x, y);
-                            if(playField[yCoord][xCoord] == 10){
-                                System.out.printf("Hit a mine at %d,%d", yCoord-1, xCoord-1);
+                            // System.out.println("here " + yCoord + ":" + xCoord + " = " + playField[yCoord][xCoord]);
+                            if(playField[xCoord][yCoord] == 10){
+                                System.out.println();
                                 System.out.println("GAME OVER");
+                                System.out.printf("Hit a mine at %d,%d", yCoord+1, xCoord+1);
+                                System.out.println();
+                                System.out.println();
+                                inTurn = false;
+                                gameState = false;
+                                break;
                             }
                             turnCounter++;
         
@@ -147,6 +157,7 @@ public class gameState {
                 turnCounter++;
             }
         }
+        keyboardInput.close();
     }
 
 }
