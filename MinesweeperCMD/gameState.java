@@ -97,6 +97,7 @@ public class gameState {
             if(turnCounter >= 1){
                 boolean inTurn = true;
                 while(inTurn){
+                    System.out.println();
                     System.out.printf("Turn #%d\n", turnCounter);
                     System.out.println("1) To dig a hole");
                     System.out.println("2) To place a flag");
@@ -141,10 +142,32 @@ public class gameState {
                         }
                     }
                     else if(turnDecision == 2){
-                        System.out.println("Place flag, needs logic...");
+                        System.out.println("Place flag at at: **for abort enter 100");
+                        System.out.print("xCoord: ");
+                        yCoord = keyboardInput.nextInt() - 1;
+                        System.out.print("yCoord: ");
+                        xCoord = keyboardInput.nextInt() - 1;
+                        if((xCoord >= 0) && (xCoord < x) && (yCoord >= 0) && (yCoord < y)){
+                            System.out.println("Place flag, needs logic...");
+                            // mineField.digHole(playField, showBoard, xCoord, yCoord, x, y);
+                        }
+                        else{
+                            System.out.printf("Coordinates must be within range of 1 - %d\n", x);
+                        }
                     }
                     else if(turnDecision == 3){
-                        System.out.println("Remove flag, needs logic...");
+                        System.out.println("Remove flag at: **for abort enter 100");
+                        System.out.print("xCoord: ");
+                        yCoord = keyboardInput.nextInt() - 1;
+                        System.out.print("yCoord: ");
+                        xCoord = keyboardInput.nextInt() - 1;
+                        if((xCoord >= 0) && (xCoord < x) && (yCoord >= 0) && (yCoord < y)){
+                            System.out.println("Remove flag, needs logic...");
+                            // mineField.digHole(playField, showBoard, xCoord, yCoord, x, y);
+                        }
+                        else{
+                            System.out.printf("Coordinates must be within range of 1 - %d\n", x);
+                        }
                     }
                     else if(turnDecision == 4){
                         System.out.println("Aborting Game...");
