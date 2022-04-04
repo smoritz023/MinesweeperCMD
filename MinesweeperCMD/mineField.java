@@ -375,6 +375,12 @@ public class mineField {
         return board;
     }
 
+    public static int[][] removeFlag(int[][] board, int xCoord, int yCoord){
+        //9 = F
+        board[xCoord][yCoord] = 0;
+        return board;
+    }
+
     public static int[][] placeMines(int[][] board, int xMax, int yMax, int d, int xCoord, int yCoord){
         Random rand = new Random();
         while(d > 0){

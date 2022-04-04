@@ -31,6 +31,7 @@ public class gameState {
                     x = 10;
                     y = x;
                     numOfMines = 15;
+                    numOfFlagsRemain = numOfMines;
                     break;
                 }
                 if(mode == 2){
@@ -38,6 +39,7 @@ public class gameState {
                     x = 15;
                     y = x;
                     numOfMines = 25;
+                    numOfFlagsRemain = numOfMines;
                     break;
                 }
                 if(mode == 3){
@@ -45,6 +47,7 @@ public class gameState {
                     x = 20;
                     y = x;
                     numOfMines = 35;
+                    numOfFlagsRemain = numOfMines;
                     break;
                 }
                 if(mode == 4){
@@ -54,6 +57,7 @@ public class gameState {
                     y = x;
                     System.out.print("Number of Mines: ");
                     numOfMines = keyboardInput.nextInt();
+                    numOfFlagsRemain = numOfMines;
                     break;
                 }
                 if(mode == 5){
@@ -99,6 +103,7 @@ public class gameState {
                 while(inTurn){
                     System.out.println();
                     System.out.printf("Turn #%d\n", turnCounter);
+                    System.out.printf("Number of flags remaining: #%d\n", numOfFlagsRemain);
                     System.out.println("1) To dig a hole");
                     System.out.println("2) To place a flag");
                     System.out.println("3) To remove a flag");
@@ -119,6 +124,9 @@ public class gameState {
                         // xCoord--;
                         // yCoord--;
                         if((xCoord >= 0) && (xCoord < x) && (yCoord >= 0) && (yCoord < y)){
+                            if(showBoard[xCoord][yCoord] == 9){
+                                numOfFlagsRemain++;
+                            }
                             mineField.digHole(playField, showBoard, xCoord, yCoord, x, y);
                             // System.out.println("here " + yCoord + ":" + xCoord + " = " + playField[yCoord][xCoord]);
                             if(playField[xCoord][yCoord] == 10){
@@ -148,23 +156,46 @@ public class gameState {
                         System.out.print("yCoord: ");
                         xCoord = keyboardInput.nextInt() - 1;
                         if((xCoord >= 0) && (xCoord < x) && (yCoord >= 0) && (yCoord < y)){
-                            if(showBoard[xCoord][yCoord] != 1 || showBoard[xCoord][yCoord] != 9){
+                            if((showBoard[xCoord][yCoord] != 1 && showBoard[xCoord][yCoord] != 9) && (numOfFlagsRemain >= 0)){
                                 mineField.placeFlag(showBoard, xCoord, yCoord);
                                 System.out.printf("x: %d,y: %d\n", yCoord,xCoord);
                                 mines.printShowBoard(playField, showBoard, x, y);
                                 turnCounter++;
+                                numOfFlagsRemain--;
                             }
-                            else{
-                                System.out.println("here");
+                            else if(numOfFlagsRemain <= 0){
+                                System.out.println("0 Flags Remaining, unable to place flag");
+                            }
+                            else if(showBoard[xCoord][yCoord] == 1){
+                                System.out.println("Space has already been cleared");
+                            }
+                            else if(showBoard[xCoord][yCoord] == 9){
+                                System.out.println("Flag already has been placed here");
                             }
                         }
                         else{
                             System.out.printf("Coordinates must be within range of 1 - %d\n", x);
                         }
                     }
-
-                    //Turn Decision 3 was here...
-
+                    else if(turnDecision == 3){
+                        System.out.println("Remove flag at at: **for abort enter 100");
+                        System.out.print("xCoord: ");
+                        yCoord = keyboardInput.nextInt() - 1;
+                        System.out.print("yCoord: ");
+                        xCoord = keyboardInput.nextInt() - 1;
+                        if((xCoord >= 0) && (xCoord < x) && (yCoord >= 0) && (yCoord < y)){
+                            if(showBoard[xCoord][yCoord] != 9){
+                                System.out.println("No flag to remove here");
+                            }
+                            else{
+                                mineField.removeFlag(showBoard, xCoord, yCoord);
+                                System.out.printf("x: %d,y: %d\n", yCoord,xCoord);
+                                mines.printShowBoard(playField, showBoard, x, y);
+                                turnCounter++;
+                                numOfFlagsRemain++;
+                            }
+                        }
+                    }
                     else if(turnDecision == 4){
                         System.out.println("Aborting Game...");
                         System.out.println("Goodbye");
