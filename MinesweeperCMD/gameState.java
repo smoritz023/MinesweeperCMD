@@ -148,27 +148,23 @@ public class gameState {
                         System.out.print("yCoord: ");
                         xCoord = keyboardInput.nextInt() - 1;
                         if((xCoord >= 0) && (xCoord < x) && (yCoord >= 0) && (yCoord < y)){
-                            System.out.println("Place flag, needs logic...");
-                            // mineField.digHole(playField, showBoard, xCoord, yCoord, x, y);
+                            if(showBoard[xCoord][yCoord] != 1 || showBoard[xCoord][yCoord] != 9){
+                                mineField.placeFlag(showBoard, xCoord, yCoord);
+                                System.out.printf("x: %d,y: %d\n", yCoord,xCoord);
+                                mines.printShowBoard(playField, showBoard, x, y);
+                                turnCounter++;
+                            }
+                            else{
+                                System.out.println("here");
+                            }
                         }
                         else{
                             System.out.printf("Coordinates must be within range of 1 - %d\n", x);
                         }
                     }
-                    else if(turnDecision == 3){
-                        System.out.println("Remove flag at: **for abort enter 100");
-                        System.out.print("xCoord: ");
-                        yCoord = keyboardInput.nextInt() - 1;
-                        System.out.print("yCoord: ");
-                        xCoord = keyboardInput.nextInt() - 1;
-                        if((xCoord >= 0) && (xCoord < x) && (yCoord >= 0) && (yCoord < y)){
-                            System.out.println("Remove flag, needs logic...");
-                            // mineField.digHole(playField, showBoard, xCoord, yCoord, x, y);
-                        }
-                        else{
-                            System.out.printf("Coordinates must be within range of 1 - %d\n", x);
-                        }
-                    }
+
+                    //Turn Decision 3 was here...
+
                     else if(turnDecision == 4){
                         System.out.println("Aborting Game...");
                         System.out.println("Goodbye");

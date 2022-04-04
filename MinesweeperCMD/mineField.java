@@ -369,6 +369,12 @@ public class mineField {
         return board;
     }
 
+    public static int[][] placeFlag(int[][] board, int xCoord, int yCoord){
+        //9 = F
+        board[xCoord][yCoord] = 9;
+        return board;
+    }
+
     public static int[][] placeMines(int[][] board, int xMax, int yMax, int d, int xCoord, int yCoord){
         Random rand = new Random();
         while(d > 0){
