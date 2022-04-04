@@ -11,6 +11,7 @@ public class gameState {
         int turnCounter = 0;
         int xCoord;
         int yCoord;
+        int openSpotCount = 0;
         boolean diffSelector = true;
         gameState = true;
         Scanner keyboardInput = new Scanner(System.in);
@@ -101,6 +102,17 @@ public class gameState {
             if(turnCounter >= 1){
                 boolean inTurn = true;
                 while(inTurn){
+                    //if a wincondition is found a win condition
+                    if(openSpotCount == numOfMines){
+                        System.out.println();
+                        System.out.println("All mines found");
+                        System.out.println("Exiting Game...");
+                        System.out.println();
+                        gameState = false;
+                        inTurn = false;
+                        break;
+                    }
+
                     System.out.println();
                     System.out.printf("Turn #%d\n", turnCounter);
                     System.out.printf("Number of flags remaining: #%d\n", numOfFlagsRemain);
@@ -110,6 +122,7 @@ public class gameState {
                     System.out.println("4) Exit Game");
                     System.out.print("Input: ");
                     int turnDecision = keyboardInput.nextInt();
+
                     // System.out.println();
                     if(turnDecision < 1 && turnDecision > 4){
                         System.out.println("Please enter a valid number (1-4)");
@@ -140,6 +153,7 @@ public class gameState {
                                 break;
                             }
                             turnCounter++;
+                            openSpotCount = mines.winConditionChecker(showBoard, numOfMines, openSpotCount, x, y);
         
                             System.out.printf("x: %d,y: %d\n", yCoord,xCoord);
                             mines.printShowBoard(playField, showBoard, x, y);
@@ -150,32 +164,36 @@ public class gameState {
                         }
                     }
                     else if(turnDecision == 2){
-                        System.out.println("Place flag at at: **for abort enter 100");
-                        System.out.print("xCoord: ");
-                        yCoord = keyboardInput.nextInt() - 1;
-                        System.out.print("yCoord: ");
-                        xCoord = keyboardInput.nextInt() - 1;
-                        if((xCoord >= 0) && (xCoord < x) && (yCoord >= 0) && (yCoord < y)){
-                            if((showBoard[xCoord][yCoord] != 1 && showBoard[xCoord][yCoord] != 9) && (numOfFlagsRemain >= 0)){
-                                mineField.placeFlag(showBoard, xCoord, yCoord);
-                                System.out.printf("x: %d,y: %d\n", yCoord,xCoord);
-                                mines.printShowBoard(playField, showBoard, x, y);
-                                turnCounter++;
-                                numOfFlagsRemain--;
+                        if(numOfFlagsRemain > 0){
+                            System.out.println("Place flag at at: **for abort enter 100");
+                            System.out.print("xCoord: ");
+                            yCoord = keyboardInput.nextInt() - 1;
+                            System.out.print("yCoord: ");
+                            xCoord = keyboardInput.nextInt() - 1;
+                            if((xCoord >= 0) && (xCoord < x) && (yCoord >= 0) && (yCoord < y)){
+                                if((showBoard[xCoord][yCoord] != 1 && showBoard[xCoord][yCoord] != 9)){
+                                    mineField.placeFlag(showBoard, xCoord, yCoord);
+                                    System.out.printf("x: %d,y: %d\n", yCoord,xCoord);
+                                    mines.printShowBoard(playField, showBoard, x, y);
+                                    turnCounter++;
+                                    numOfFlagsRemain--;
+                                    openSpotCount = mines.winConditionChecker(showBoard, numOfMines, openSpotCount, x, y);
+                                }
+                                else if(showBoard[xCoord][yCoord] == 1){
+                                    System.out.println("Space has already been cleared");
+                                }
+                                else if(showBoard[xCoord][yCoord] == 9){
+                                    System.out.println("Flag already has been placed here");
+                                }
                             }
-                            else if(numOfFlagsRemain <= 0){
-                                System.out.println("0 Flags Remaining, unable to place flag");
-                            }
-                            else if(showBoard[xCoord][yCoord] == 1){
-                                System.out.println("Space has already been cleared");
-                            }
-                            else if(showBoard[xCoord][yCoord] == 9){
-                                System.out.println("Flag already has been placed here");
+                            else{
+                                System.out.printf("Coordinates must be within range of 1 - %d\n", x);
                             }
                         }
                         else{
-                            System.out.printf("Coordinates must be within range of 1 - %d\n", x);
+                            System.out.println("0 Flags Remaining, unable to place flag");
                         }
+
                     }
                     else if(turnDecision == 3){
                         System.out.println("Remove flag at at: **for abort enter 100");
@@ -193,6 +211,7 @@ public class gameState {
                                 mines.printShowBoard(playField, showBoard, x, y);
                                 turnCounter++;
                                 numOfFlagsRemain++;
+                                openSpotCount = mines.winConditionChecker(showBoard, numOfMines, openSpotCount, x, y);
                             }
                         }
                     }

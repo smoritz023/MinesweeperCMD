@@ -127,9 +127,16 @@ public class mines {
         return showBoard;
     }
 
-
-
-    
-
-    
+    public static int winConditionChecker(int[][] showBoard, int mineCount, int spotCount, int x, int y){
+        spotCount = 0;
+        for(int i = 0; i < x; i++){
+            for(int j = 0; j < y; j++){
+                if(showBoard[i][j] != 1){
+                    spotCount++;
+                }
+            }
+        }
+        System.out.println("Spot Count: " + spotCount);
+        return spotCount;
+    }
 }
