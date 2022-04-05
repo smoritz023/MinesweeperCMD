@@ -74,8 +74,8 @@ public class gameState {
 
         }
         //Generating Boards with x valeus
-        int[][] playField = boardOps.initializeBoard(x, x);
-        int[][] showBoard = boardOps.initializeBoard(x, x);
+        int[][] playField = mines.initializeBoard(x, x);
+        int[][] showBoard = mines.initializeBoard(x, x);
         while(gameState == true){
             if(turnCounter == 0){
                 System.out.println("Initial Dig");

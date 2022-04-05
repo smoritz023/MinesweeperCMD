@@ -139,4 +139,9 @@ public class mines {
         System.out.println("Spot Count: " + spotCount);
         return spotCount;
     }
+
+    public static int[][] initializeBoard(int x, int y){
+        int[][] board = new int[y][x];  //////
+        return board;
+    }
 }
