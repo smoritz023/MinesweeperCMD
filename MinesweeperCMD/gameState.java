@@ -124,7 +124,7 @@ public class gameState {
                     int turnDecision = keyboardInput.nextInt();
 
                     // System.out.println();
-                    if(turnDecision < 1 && turnDecision > 5){
+                    if(turnDecision < 1 && turnDecision > 4){
                         System.out.println("Please enter a valid number (1-4)");
                     }
                     else if(turnDecision == 1){
@@ -222,11 +222,11 @@ public class gameState {
                         inTurn = false;
                         break;
                     }
-                    else if(turnDecision == 5){
-                        System.out.println();
-                        mines.printMineBoard(playField, showBoard, x, y);
-                        System.out.println();
-                    }
+                    // else if(turnDecision == 5){
+                    //     System.out.println();
+                    //     mines.printMineBoard(playField, showBoard, x, y);
+                    //     System.out.println();
+                    // }
                 }
                 turnCounter++;
             }
