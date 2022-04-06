@@ -47,7 +47,7 @@ public class gameState {
                     System.out.println("Hard Mode Selected");
                     x = 20;
                     y = x;
-                    numOfMines = 35;
+                    numOfMines = 45;
                     numOfFlagsRemain = numOfMines;
                     break;
                 }
