@@ -55,11 +55,41 @@ public class gameState {
                     System.out.println("Custom Mode Selected");
                     System.out.print("Board Size Input: ");
                     x = keyboardInput.nextInt();
-                    y = x;
-                    System.out.print("Number of Mines: ");
-                    numOfMines = keyboardInput.nextInt();
-                    numOfFlagsRemain = numOfMines;
-                    break;
+                    if(x > 5 && x < 100){
+                        y = x;
+                        System.out.print("Number of Mines: ");
+                        numOfMines = keyboardInput.nextInt();
+                        if(x < 20){
+                            if(numOfMines > 0 && (numOfMines < 351)){
+                                numOfFlagsRemain = numOfMines;
+                                break;
+                            }
+                            else if(numOfMines <= 0){
+                                System.out.println("Must have more than 0 mines\n");
+                            }
+                            else if(numOfMines >= 351){
+                                System.out.printf("Must be less than %d mines\n", 351);
+                            }
+                        }
+                        else if(x > 19){
+                            if(numOfMines > 0 && (numOfMines < (x*y - 12))){
+                                numOfFlagsRemain = numOfMines;
+                                break;
+                            }
+                            else if(numOfMines <= 0){
+                                System.out.println("Must have more than 0 mines\n");
+                            }
+                            else if(numOfMines >= (x*y-12)){
+                                System.out.printf("Must be less than %d mines\n", (x*y-12));
+                            }
+                        }   
+                    }
+                    else if(x <= 5){
+                        System.out.println("Min valid board size is 6x6\n");
+                    }
+                    else if(x >= 100){
+                        System.out.println("Max valid board size is 99x99\n");
+                    }
                 }
                 if(mode == 5){
                     System.out.println("Exit Selected");
