@@ -383,24 +383,85 @@ public class mineField {
         return board;
     }
 
-    public static int[][] placeMines(int[][] board, int xMax, int yMax, int d, int xCoord, int yCoord){
+    public static int[][] placeMines(int[][] board, int xMax, int yMax, int d, int yCoord, int xCoord){
         Random rand = new Random();
         while(d > 0){
             int randX = rand.nextInt(xMax);
             int randY = rand.nextInt(yMax);
-
-            if(xCoord == xMax-1){
-                if(yCoord == yMax-1){
-                    System.out.println("here");
+            //Center
+            if((xCoord > 0) && (xCoord < xMax-1) && (yCoord > 0) && (yCoord < yMax)){
+                if((board[randY][randX] != 10) &&
+                        (randX != xCoord) && (randX != (xCoord-1)) && (randX != (xCoord+1)) &&
+                        (randY != yCoord) && (randY != (yCoord-1)) && (randY != (yCoord+1))){
+                    board[randY][randX] = 10;
+                    d--;
                 }
             }
-            if((board[randY][randX] != 10) &&
-                    (randX != xCoord) && (randX != (xCoord-1)) && (randX != (xCoord+1)) &&
-                    (randY != yCoord) && (randY != (yCoord-1)) && (randY != (yCoord+1))){
-                board[randY][randX] = 10;
-                d--;
+            //Top left corner
+            if((xCoord == 0) && (yCoord == 0)){
+                if((board[randY][randX] != 10) &&
+                        (randX != xCoord) && (randX != (xCoord+1)) && (randX != (xCoord+2)) && (randX != (xCoord+3)) &&
+                        (randY != yCoord) && (randY != (yCoord+1)) && (randY != (yCoord+2)) && (randY != (yCoord+3))){
+                    board[randY][randX] = 10;
+                    d--;
+                }
             }
+            //Top
+            if((xCoord > 0) && (xCoord < xMax-1) && (yCoord == 0)){
+                if((board[randY][randX] != 10) &&
+                            (randX != xCoord) && (randX != (xCoord+1)) && (randX != (xCoord+2)) && (randY != (yCoord-2)) &&
+                            (randY != yCoord) && (randY != (yCoord-1)) && (randY != (yCoord+1)) && (randY != (yCoord+2))){
+                        board[randY][randX] = 10;
+                        d--;
+                }
+            }
+            //Top right corner
+            if((xCoord == xMax-1) && (yCoord == 0)){
+                if((board[randY][randX] != 10) &&
+                        (randX != xCoord) && (randX != (xCoord-1)) && (randX != (xCoord-2)) && (randX != (xCoord-3)) &&
+                        (randY != yCoord) && (randY != (yCoord+1)) && (randY != (yCoord+2)) && (randY != (yCoord+3))){
+                    board[randY][randX] = 10;
+                    d--;
+                }
+            }
+            //Right
+            if((xCoord == xMax-1) && (yCoord < yMax-1) && (yCoord > 0)){
+                if((board[randY][randX] != 10) &&
+                            (randX != xCoord) && (randX != (xCoord-1)) && (randX != (xCoord-2)) && (randY != (yCoord-2)) &&
+                            (randY != yCoord) && (randY != (yCoord-1)) && (randY != (yCoord+1)) && (randY != (yCoord+2))){
+                        board[randY][randX] = 10;
+                        d--;
+                }
+            }
+            //Bottom right corner
+            if((xCoord == xMax-1) && (yCoord == yMax-1)){
+                if((board[randY][randX] != 10) &&
+                        (randX != xCoord) && (randX != (xCoord-1)) && (randX != (xCoord-2)) && (randX != (xCoord-3)) &&
+                        (randY != yCoord) && (randY != (yCoord-1)) && (randY != (yCoord-2)) && (randY != (yCoord-3))){
+                    board[randY][randX] = 10;
+                    d--;
+                }
+            }
+            //Bottom
+            if((yCoord == xMax-1) && (xCoord < xMax-1) && (xCoord > 0)){
+                if((board[randY][randX] != 10) &&
+                        (randX != xCoord) && (randX != (xCoord-1)) && (randX != (xCoord+1)) && (randY != (xCoord-2)) &&
+                        (randY != yCoord) && (randY != (yCoord-1)) && (randY != (yCoord-2)) && (randY != (xCoord+2))){
+                    board[randY][randX] = 10;
+                    d--;
+                }
+            }
+            //Bottom left corner
 
+            //Left
+            if((xCoord == 0) && (yCoord < yMax-1) && (yCoord > 0)){
+                if((board[randY][randX] != 10) &&
+                        (randX != xCoord) && (randX != (xCoord+1)) && (randX != (xCoord+2)) && (randY != (yCoord-2)) &&
+                        (randY != yCoord) && (randY != (yCoord-1)) && (randY != (yCoord+2)) && (randY != (yCoord+2))){
+                    board[randY][randX] = 10;
+                    d--;
+                }
+            }
         }
         return board;
     }

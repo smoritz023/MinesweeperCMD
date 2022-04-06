@@ -39,8 +39,7 @@ public class gameState {
                     System.out.println("Medium Mode Selected");
                     x = 15;
                     y = x;
-                    // numOfMines = 25;
-                    numOfMines = 55;
+                    numOfMines = 25;
                     numOfFlagsRemain = numOfMines;
                     break;
                 }
